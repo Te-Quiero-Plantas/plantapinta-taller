@@ -1,51 +1,91 @@
 import { Card, CardContent } from "@/components/ui/card";
 import paintedPotsImage from "@/assets/painted-pots.jpg";
 import transplantImage from "@/assets/transplant.jpg";
-import { Palette, Sprout, Coffee, Camera, Users, Heart } from "lucide-react";
+import { Palette, Sprout, Coffee, Camera, Users, Heart, Wine, Smile } from "lucide-react";
+import { useWorkshop } from "@/contexts/WorkshopContext";
 
-const features = [
+const familyFeatures = [
   {
     icon: Palette,
-    title: "Materiales Premium",
-    description: "Pinturas acrílicas de alta calidad, pinceles profesionales y todo lo necesario para crear",
+    title: "Materiales para Todos",
+    description: "Pinturas y pinceles adaptados para niños y adultos",
   },
   {
     icon: Sprout,
-    title: "Plantas Incluidas",
-    description: "Llevate tus plantas a casa en las macetas que decoraste con tu propio estilo",
+    title: "Plantas Familiares",
+    description: "Plantas fáciles de cuidar perfectas para niños",
   },
   {
     icon: Users,
-    title: "Grupos Reducidos",
-    description: "Máximo 8 personas por taller para garantizar atención personalizada",
+    title: "Ambiente Familiar",
+    description: "Espacio seguro y divertido para toda la familia",
   },
   {
-    icon: Coffee,
-    title: "Merienda",
-    description: "Disfruta de café, té y snacks mientras creas (planes Creativo y Experto)",
+    icon: Smile,
+    title: "Snacks para Niños",
+    description: "Merienda saludable incluida para los pequeños",
   },
   {
     icon: Camera,
-    title: "Recuerdos",
-    description: "Capturamos los mejores momentos para que tengas un recuerdo de tu experiencia",
+    title: "Fotos Familiares",
+    description: "Capturamos los momentos especiales en familia",
+  },
+  {
+    icon: Heart,
+    title: "Experiencia Educativa",
+    description: "Los niños aprenden sobre plantas y creatividad",
+  },
+];
+
+const adultsFeatures = [
+  {
+    icon: Wine,
+    title: "Bebidas Incluidas",
+    description: "Copa de vino o bebida de tu elección",
+  },
+  {
+    icon: Palette,
+    title: "Materiales Premium",
+    description: "Pinturas acrílicas profesionales y macetas de calidad",
+  },
+  {
+    icon: Sprout,
+    title: "Plantas Exclusivas",
+    description: "Selección de plantas decorativas y exóticas",
+  },
+  {
+    icon: Coffee,
+    title: "Snacks Gourmet",
+    description: "Variedad de bocadillos y aperitivos premium",
+  },
+  {
+    icon: Camera,
+    title: "Fotos Profesionales",
+    description: "Sesión fotográfica de tu creación",
   },
   {
     icon: Heart,
     title: "Ambiente Relajado",
-    description: "Un espacio acogedor donde puedes ser creativo sin presiones",
+    description: "Música ambiente y espacio para socializar",
   },
 ];
 
 export const WhatsIncluded = () => {
+  const { selectedWorkshop } = useWorkshop();
+  const features = selectedWorkshop === 'family' ? familyFeatures : adultsFeatures;
+  const title = selectedWorkshop === 'family' 
+    ? 'Taller Padres + Hijos' 
+    : 'Taller para Adultos';
+
   return (
-    <section className="py-24 bg-background">
+    <section id="que-incluye" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            ¿Qué Incluye?
+            ¿Qué Incluye el {title}?
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Todo lo que necesitas para una experiencia creativa inolvidable
+            Todo lo que necesitas para una experiencia inolvidable
           </p>
         </div>
 

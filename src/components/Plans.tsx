@@ -2,48 +2,23 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-
-const plans = [
-  {
-    name: "Plan Individual",
-    price: "S/ 70",
-    description: "Perfecto para una experiencia personal y creativa",
-    features: [
-      "1 maceta para pintar",
-      "Set completo de pinturas y pinceles",
-      "1 planta para transplantar",
-      "Guía de cuidados",
-      "Merienda o bebida incluida",
-      "Todas las técnicas de pintura y transplante",
-      "Duración: 3 horas",
-    ],
-    popular: false,
-  },
-  {
-    name: "Combo para 2",
-    price: "S/ 120",
-    description: "La mejor opción para compartir en pareja, amigos o familia",
-    features: [
-      "2 macetas para pintar",
-      "Set completo de pinturas y pinceles por persona",
-      "2 plantas para transplantar",
-      "Guía de cuidados para cada uno",
-      "Merienda o bebidas incluidas",
-      "Todas las técnicas de pintura y transplante",
-      "Foto grupal de regalo",
-      "Duración: 3 horas",
-      "¡Ahorra S/ 20!",
-    ],
-    popular: true,
-  },
-];
+import { useWorkshop } from "@/contexts/WorkshopContext";
+import { familyPlans, adultsPlans } from "@/data/workshopData";
 
 export const Plans = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { selectedWorkshop } = useWorkshop();
+  
+  const plans = selectedWorkshop === 'family' ? familyPlans : adultsPlans;
+  const title = selectedWorkshop === 'family' 
+    ? 'Planes - Taller Padres + Hijos' 
+    : 'Planes - Taller para Adultos';
+
   const scrollToInscription = (planValue: string) => {
     const params = new URLSearchParams(location.search);
     params.set('plan', planValue);
+    params.set('workshop', selectedWorkshop || '');
     navigate(`?${params.toString()}`);
 
     const element = document.getElementById('inscripcion');
@@ -55,10 +30,10 @@ export const Plans = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            Nuestros Planes
+            {title}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Elige la experiencia perfecta para ti. Todos incluyen materiales y plantas.
+            Elige el plan perfecto. Todos incluyen materiales y plantas.
           </p>
         </div>
 
@@ -95,7 +70,7 @@ export const Plans = () => {
                 <Button 
                   className="w-full"
                   variant={plan.popular ? "hero" : "default"}
-                  onClick={() => scrollToInscription(plan.popular ? 'combo' : 'individual')}
+                  onClick={() => scrollToInscription(plan.value)}
                 >
                   Elegir Plan
                 </Button>

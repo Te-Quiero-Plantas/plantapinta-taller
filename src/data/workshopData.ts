@@ -1,0 +1,110 @@
+export const familyPlans = [
+  {
+    name: "Plan Individual",
+    price: "S/ 70",
+    description: "Perfecto para un padre/madre con un hijo",
+    features: [
+      "1 maceta para pintar",
+      "Materiales de arte completos",
+      "1 planta para transplantar",
+      "Guía de cuidados familiar",
+      "Snacks para niños",
+      "Instrucciones paso a paso",
+      "Duración: 2.5 horas",
+    ],
+    popular: false,
+    value: "individual-family",
+  },
+  {
+    name: "Combo Familiar",
+    price: "S/ 120",
+    description: "Ideal para 2 adultos + niños o grupos familiares",
+    features: [
+      "2 macetas para pintar",
+      "Materiales completos por persona",
+      "2 plantas para transplantar",
+      "Guías de cuidado",
+      "Snacks y bebidas para todos",
+      "Foto familiar de regalo",
+      "Duración: 2.5 horas",
+      "¡Ahorra S/ 20!",
+    ],
+    popular: true,
+    value: "combo-family",
+  },
+];
+
+export const adultsPlans = [
+  {
+    name: "Plan Individual",
+    price: "S/ 70",
+    description: "Experiencia personal relajante",
+    features: [
+      "1 maceta premium para pintar",
+      "Set completo de pinturas profesionales",
+      "1 planta decorativa",
+      "Copa de vino o bebida",
+      "Snacks gourmet",
+      "Guía de cuidados",
+      "Duración: 3 horas",
+    ],
+    popular: false,
+    value: "individual-adults",
+  },
+  {
+    name: "Combo para 2",
+    price: "S/ 120",
+    description: "Perfecto para compartir con amigos o pareja",
+    features: [
+      "2 macetas premium",
+      "Set completo de pinturas por persona",
+      "2 plantas decorativas",
+      "Bebidas incluidas para ambos",
+      "Tabla de snacks gourmet",
+      "Guías de cuidado",
+      "Foto de recuerdo",
+      "Duración: 3 horas",
+      "¡Ahorra S/ 20!",
+    ],
+    popular: true,
+    value: "combo-adults",
+  },
+];
+
+export const familySchedules = [
+  {
+    day: "Sábados",
+    times: [
+      { label: "10:00 AM", value: "fam-sab-10" },
+      { label: "3:00 PM", value: "fam-sab-15" },
+    ],
+    available: true,
+  },
+  {
+    day: "Domingos", 
+    times: [
+      { label: "10:00 AM", value: "fam-dom-10" },
+      { label: "3:00 PM", value: "fam-dom-15" },
+    ],
+    available: true,
+  },
+];
+
+export const adultsSchedules = [
+  {
+    day: "Viernes",
+    times: [
+      { label: "6:00 PM", value: "adu-vie-18" },
+      { label: "8:00 PM", value: "adu-vie-20" },
+    ],
+    available: true,
+  },
+  {
+    day: "Sábados",
+    times: [
+      { label: "5:00 PM", value: "adu-sab-17" },
+      { label: "7:00 PM", value: "adu-sab-19" },
+    ],
+    available: true,
+  },
+];

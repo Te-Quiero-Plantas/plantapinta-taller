@@ -8,10 +8,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
+import { useWorkshop } from "@/contexts/WorkshopContext";
+import { familyPlans, adultsPlans, familySchedules, adultsSchedules } from "@/data/workshopData";
 
 export const Registration = () => {
   const { toast } = useToast();
   const [searchParams] = useSearchParams();
+  const { selectedWorkshop } = useWorkshop();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,6 +23,12 @@ export const Registration = () => {
     schedule: "",
     message: "",
   });
+
+  const plans = selectedWorkshop === 'family' ? familyPlans : adultsPlans;
+  const schedules = selectedWorkshop === 'family' ? familySchedules : adultsSchedules;
+  const workshopTitle = selectedWorkshop === 'family' 
+    ? 'Taller Padres + Hijos' 
+    : 'Taller para Adultos';
 
   useEffect(() => {
     const planParam = searchParams.get('plan');
@@ -78,7 +87,7 @@ export const Registration = () => {
 
         <Card className="max-w-2xl mx-auto shadow-soft">
           <CardHeader>
-            <CardTitle>Formulario de Inscripción</CardTitle>
+            <CardTitle>Formulario de Inscripción - {workshopTitle}</CardTitle>
             <CardDescription>
               Los campos marcados con * son obligatorios
             </CardDescription>
@@ -131,8 +140,11 @@ export const Registration = () => {
                     <SelectValue placeholder="Selecciona un plan" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="individual">Plan Individual - S/ 70</SelectItem>
-                    <SelectItem value="combo">Combo para 2 - S/ 120</SelectItem>
+                    {plans.map((plan) => (
+                      <SelectItem key={plan.value} value={plan.value}>
+                        {plan.name} - {plan.price}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
@@ -148,13 +160,13 @@ export const Registration = () => {
                     <SelectValue placeholder="Selecciona un horario" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="sab-10">Sábado 10:00 AM</SelectItem>
-                    <SelectItem value="sab-14">Sábado 2:00 PM</SelectItem>
-                    <SelectItem value="sab-17">Sábado 5:00 PM</SelectItem>
-                    <SelectItem value="dom-11">Domingo 11:00 AM</SelectItem>
-                    <SelectItem value="dom-15">Domingo 3:00 PM</SelectItem>
-                    <SelectItem value="vie-18">Viernes 6:00 PM</SelectItem>
-                    <SelectItem value="vie-20">Viernes 8:00 PM</SelectItem>
+                    {schedules.flatMap((schedule) =>
+                      schedule.times.map((time) => (
+                        <SelectItem key={time.value} value={time.value}>
+                          {schedule.day} {time.label}
+                        </SelectItem>
+                      ))
+                    )}
                   </SelectContent>
                 </Select>
               </div>

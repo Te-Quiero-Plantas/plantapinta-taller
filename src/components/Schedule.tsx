@@ -2,41 +2,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-
-const schedules = [
-  {
-    day: "Sábados",
-    times: [
-      { label: "10:00 AM", value: "sab-10" },
-      { label: "2:00 PM", value: "sab-14" },
-      { label: "5:00 PM", value: "sab-17" }
-    ],
-    available: true,
-  },
-  {
-    day: "Domingos", 
-    times: [
-      { label: "11:00 AM", value: "dom-11" },
-      { label: "3:00 PM", value: "dom-15" }
-    ],
-    available: true,
-  },
-  {
-    day: "Viernes",
-    times: [
-      { label: "6:00 PM", value: "vie-18" },
-      { label: "8:00 PM", value: "vie-20" }
-    ],
-    available: true,
-  },
-];
+import { useWorkshop } from "@/contexts/WorkshopContext";
+import { familySchedules, adultsSchedules } from "@/data/workshopData";
 
 export const Schedule = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { selectedWorkshop } = useWorkshop();
+  
+  const schedules = selectedWorkshop === 'family' ? familySchedules : adultsSchedules;
+  const title = selectedWorkshop === 'family' 
+    ? 'Horarios - Taller Padres + Hijos' 
+    : 'Horarios - Taller para Adultos';
+
   const selectSchedule = (scheduleValue: string) => {
     const params = new URLSearchParams(location.search);
     params.set('schedule', scheduleValue);
+    params.set('workshop', selectedWorkshop || '');
     navigate(`?${params.toString()}`);
 
     const element = document.getElementById('inscripcion');
@@ -48,10 +30,10 @@ export const Schedule = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            Horarios Disponibles
+            {title}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Talleres todas las semanas. Elige el horario que mejor se adapte a ti.
+            Talleres cada semana. Elige el horario perfecto para ti.
           </p>
         </div>
 
