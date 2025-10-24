@@ -1,25 +1,45 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Calendar, Clock, MapPin } from "lucide-react";
 
 const schedules = [
   {
     day: "Sábados",
-    times: ["10:00 AM", "2:00 PM", "5:00 PM"],
+    times: [
+      { label: "10:00 AM", value: "sab-10" },
+      { label: "2:00 PM", value: "sab-14" },
+      { label: "5:00 PM", value: "sab-17" }
+    ],
     available: true,
   },
   {
     day: "Domingos", 
-    times: ["11:00 AM", "3:00 PM"],
+    times: [
+      { label: "11:00 AM", value: "dom-11" },
+      { label: "3:00 PM", value: "dom-15" }
+    ],
     available: true,
   },
   {
     day: "Viernes",
-    times: ["6:00 PM", "8:00 PM"],
+    times: [
+      { label: "6:00 PM", value: "vie-18" },
+      { label: "8:00 PM", value: "vie-20" }
+    ],
     available: true,
   },
 ];
 
 export const Schedule = () => {
+  const selectSchedule = (scheduleValue: string) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('schedule', scheduleValue);
+    window.history.pushState({}, '', url);
+    
+    const element = document.getElementById('inscripcion');
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section id="horarios" className="py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -49,13 +69,15 @@ export const Schedule = () => {
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {schedule.times.map((time, timeIndex) => (
-                    <div 
+                    <Button
                       key={timeIndex}
-                      className="flex items-center gap-2 p-3 bg-secondary/50 rounded-lg"
+                      variant="outline"
+                      className="flex items-center gap-2 p-3 justify-start hover:bg-primary/10 hover:border-primary"
+                      onClick={() => selectSchedule(time.value)}
                     >
                       <Clock className="w-4 h-4 text-primary" />
-                      <span className="font-medium">{time}</span>
-                    </div>
+                      <span className="font-medium">{time.label}</span>
+                    </Button>
                   ))}
                 </div>
               </CardContent>

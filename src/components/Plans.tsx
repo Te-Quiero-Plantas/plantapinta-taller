@@ -38,7 +38,11 @@ const plans = [
 ];
 
 export const Plans = () => {
-  const scrollToInscription = () => {
+  const scrollToInscription = (planValue: string) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('plan', planValue);
+    window.history.pushState({}, '', url);
+    
     const element = document.getElementById('inscripcion');
     element?.scrollIntoView({ behavior: "smooth" });
   };
@@ -88,7 +92,7 @@ export const Plans = () => {
                 <Button 
                   className="w-full"
                   variant={plan.popular ? "hero" : "default"}
-                  onClick={scrollToInscription}
+                  onClick={() => scrollToInscription(plan.popular ? 'combo' : 'individual')}
                 >
                   Elegir Plan
                 </Button>

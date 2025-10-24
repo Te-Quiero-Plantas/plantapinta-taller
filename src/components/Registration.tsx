@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,6 +11,7 @@ import { Send } from "lucide-react";
 
 export const Registration = () => {
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,6 +20,19 @@ export const Registration = () => {
     schedule: "",
     message: "",
   });
+
+  useEffect(() => {
+    const planParam = searchParams.get('plan');
+    const scheduleParam = searchParams.get('schedule');
+    
+    if (planParam || scheduleParam) {
+      setFormData(prev => ({
+        ...prev,
+        ...(planParam && { plan: planParam }),
+        ...(scheduleParam && { schedule: scheduleParam }),
+      }));
+    }
+  }, [searchParams]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
