@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const plans = [
   {
@@ -38,11 +39,13 @@ const plans = [
 ];
 
 export const Plans = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const scrollToInscription = (planValue: string) => {
-    const url = new URL(window.location.href);
-    url.searchParams.set('plan', planValue);
-    window.history.pushState({}, '', url);
-    
+    const params = new URLSearchParams(location.search);
+    params.set('plan', planValue);
+    navigate(`?${params.toString()}`);
+
     const element = document.getElementById('inscripcion');
     element?.scrollIntoView({ behavior: "smooth" });
   };
