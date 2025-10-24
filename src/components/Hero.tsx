@@ -35,13 +35,13 @@ export const Hero = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground leading-tight">
-            Talleres de Pintura
+            Talleres de Pintura de Macetas
             <br />
-            <span className="text-primary-glow">de Macetas & Plantas</span>
+            <span className="text-primary-glow">& Transplante de Plantas</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-2xl mx-auto">
-            Aprende a decorar tus macetas y cuidar tus plantas en talleres creativos y divertidos
+            Descubre tu creatividad mientras aprendes a cuidar tus plantas. Experiencias únicas para adultos y familias.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">

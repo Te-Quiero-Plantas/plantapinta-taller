@@ -116,9 +116,8 @@ export const Registration = () => {
                     <SelectValue placeholder="Selecciona un plan" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="iniciacion">Iniciación - $35</SelectItem>
-                    <SelectItem value="creativo">Creativo - $55</SelectItem>
-                    <SelectItem value="experto">Experto - $85</SelectItem>
+                    <SelectItem value="individual">Plan Individual - S/ 70</SelectItem>
+                    <SelectItem value="combo">Combo para 2 - S/ 120</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
