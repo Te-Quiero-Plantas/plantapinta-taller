@@ -1,6 +1,6 @@
 export const familyPlans = [
   {
-    name: "Plan Individual",
+    name: "Pack Individual",
     price: "S/ 70",
     description: "Perfecto para un padre/madre con un hijo",
     features: [
@@ -10,23 +10,23 @@ export const familyPlans = [
       "Guía de cuidados familiar",
       "Snacks para niños",
       "Instrucciones paso a paso",
-      "Duración: 2.5 horas",
+      "Duración: 2 horas",
     ],
     popular: false,
     value: "individual-family",
   },
   {
-    name: "Combo Familiar",
+    name: "Pack Familiar",
     price: "S/ 120",
     description: "Ideal para 2 adultos + niños o grupos familiares",
     features: [
-      "2 macetas para pintar",
+      "1 maceta para pintar",
       "Materiales completos por persona",
-      "2 plantas para transplantar",
+      "1 planta para transplantar",
       "Guías de cuidado",
       "Snacks y bebidas para todos",
       "Foto familiar de regalo",
-      "Duración: 2.5 horas",
+      "Duración: 2 horas",
       "¡Ahorra S/ 20!",
     ],
     popular: true,
@@ -36,7 +36,7 @@ export const familyPlans = [
 
 export const adultsPlans = [
   {
-    name: "Plan Individual",
+    name: "Pack Individual",
     price: "S/ 70",
     description: "Experiencia personal relajante",
     features: [
@@ -52,7 +52,7 @@ export const adultsPlans = [
     value: "individual-adults",
   },
   {
-    name: "Combo para 2",
+    name: "Pack para 2",
     price: "S/ 120",
     description: "Perfecto para compartir con amigos o pareja",
     features: [
