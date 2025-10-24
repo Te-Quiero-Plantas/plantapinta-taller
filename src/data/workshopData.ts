@@ -6,7 +6,7 @@ export const familyPlans = [
     features: [
       "1 maceta para pintar",
       "1 planta para transplantar",
-      "Snacks para niños",
+      "Snack saludable",
       "Materiales de arte completos",
       "Instrucciones paso a paso",
       "Guía de cuidados familiar",
@@ -35,7 +35,7 @@ export const familyPlans = [
     popular: true,
     value: "combo-family",
   },
-    {
+  {
     name: "Pack Familiar - 3 personas",
     price: "S/ 150",
     description: "Ideal para 2 adultos + 1 niño",
@@ -49,7 +49,6 @@ export const familyPlans = [
       "Foto familiar digital de regalo",
       "Te llevarás tu planta y maceta a casa",
       "Duración: 2.5 horas",
-      
     ],
     popular: false,
     value: "combo-family",
