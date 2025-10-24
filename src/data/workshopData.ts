@@ -58,7 +58,7 @@ export const adultsPlans = [
     features: [
       "1 maceta premium",
       "Set completo de pinturas por persona",
-      "2 plantas decorativas",
+      "1 plantas decorativa",
       "Bebidas incluidas para ambos",
       "Tabla de snacks gourmet",
       "Guías de cuidado",
