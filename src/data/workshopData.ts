@@ -5,31 +5,53 @@ export const familyPlans = [
     description: "Perfecto para un padre/madre con un hijo",
     features: [
       "1 maceta para pintar",
-      "Materiales de arte completos",
       "1 planta para transplantar",
-      "Guía de cuidados familiar",
       "Snacks para niños",
+      "Materiales de arte completos",
       "Instrucciones paso a paso",
+      "Guía de cuidados familiar",
+      "Te llevarás tu planta y maceta a casa"
       "Duración: 2.5 horas",
     ],
     popular: false,
     value: "individual-family",
   },
   {
-    name: "Pack Familiar",
+    name: "Pack Familiar - 2 personas",
     price: "S/ 120",
-    description: "Ideal para 2 adultos + niños o grupos familiares",
+    description: "Ideal para 1 adulto + 1 niño",
     features: [
       "1 maceta para pintar",
-      "Materiales completos por persona",
       "1 planta para transplantar",
-      "Guías de cuidado",
       "Snacks y bebidas para todos",
-      "Foto familiar de regalo",
+      "Materiales completos por persona",
+      "Guías de cuidado",
+      "1 Regalo sorpresa"
+      "Foto familiar digital de regalo",
+      "Te llevarás tu planta y maceta a casa"
       "Duración: 2.5 horas",
       "¡Ahorra S/ 20!",
     ],
     popular: true,
+    value: "combo-family",
+  },
+    {
+    name: "Pack Familiar - 3 personas",
+    price: "S/ 150",
+    description: "Ideal para 2 adultos + 1 niño",
+    features: [
+      "1 maceta para pintar",
+      "1 planta para transplantar",
+      "Snacks y bebidas para todos",
+      "Materiales completos",
+      "Guías de cuidado",
+      "1 Regalo sorpresa"
+      "Foto familiar digital de regalo",
+      "Te llevarás tu planta y maceta a casa"
+      "Duración: 2.5 horas",
+      
+    ],
+    popular: false,
     value: "combo-family",
   },
 ];
