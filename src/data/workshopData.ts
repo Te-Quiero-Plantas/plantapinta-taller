@@ -10,7 +10,7 @@ export const familyPlans = [
       "Materiales de arte completos",
       "Instrucciones paso a paso",
       "Guía de cuidados familiar",
-      "Te llevarás tu planta y maceta a casa"
+      "Te llevarás tu planta y maceta a casa",
       "Duración: 2.5 horas",
     ],
     popular: false,
@@ -26,9 +26,9 @@ export const familyPlans = [
       "Snacks y bebidas para todos",
       "Materiales completos por persona",
       "Guías de cuidado",
-      "1 Regalo sorpresa"
+      "1 Regalo sorpresa",
       "Foto familiar digital de regalo",
-      "Te llevarás tu planta y maceta a casa"
+      "Te llevarás tu planta y maceta a casa",
       "Duración: 2.5 horas",
       "¡Ahorra S/ 20!",
     ],
@@ -45,9 +45,9 @@ export const familyPlans = [
       "Snacks y bebidas para todos",
       "Materiales completos",
       "Guías de cuidado",
-      "1 Regalo sorpresa"
+      "1 Regalo sorpresa",
       "Foto familiar digital de regalo",
-      "Te llevarás tu planta y maceta a casa"
+      "Te llevarás tu planta y maceta a casa",
       "Duración: 2.5 horas",
       
     ],
