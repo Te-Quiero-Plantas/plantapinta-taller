@@ -33,7 +33,7 @@ export const familyPlans = [
       "¡Ahorra S/ 20!",
     ],
     popular: true,
-    value: "combo-family",
+    value: "combo1-family",
   },
   {
     name: "Pack Familiar - 3 personas",
@@ -51,7 +51,7 @@ export const familyPlans = [
       "Duración: 2.5 horas",
     ],
     popular: false,
-    value: "combo-family",
+    value: "combo2-family",
   },
 ];
 
