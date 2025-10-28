@@ -1,27 +1,26 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import React from 'react'
+import { CartProvider } from '../context/CartContext'
+import { HeroCTA } from '../components/checkout/HeroCTA'
+import { IncludesSection } from '../components/checkout/IncludesSection'
+import { PlansSection } from '../components/checkout/PlansSection'
+import { DatesSection } from '../components/checkout/DatesSection'
+import { CartSection } from '../components/checkout/CartSection'
 
-const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+export default function Page() {
+return (
+<CartProvider>
+<main className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-10">
+<HeroCTA />
+{/* Sección "¿Qué incluye?" antes de elegir plan */}
+<IncludesSection />
+{/* Selección de planes con "Añadir a carrito" (multi-selección) */}
+<PlansSection />
+{/* Fechas con capacidad/inscritos */}
+<DatesSection />
+{/* Carrito final */}
+<CartSection />
+</main>
+</CartProvider>
+)
+}
