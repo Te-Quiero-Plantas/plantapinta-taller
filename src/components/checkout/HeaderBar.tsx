@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useCart } from '../../context/CartContext'
+
+
+function formatCurrency(value: number) {
+return value.toLocaleString('es-PE', {
+style: 'currency',
+currency: 'PEN',
+minimumFractionDigits: 2,
+})
+}
 
 
 export const HeaderBar: React.FC = () => {
 const { cart } = useCart()
 const items = cart.plans.reduce((acc, p) => acc + p.quantity, 0)
+const total = useMemo(
+() => cart.plans.reduce((acc, p) => acc + p.price * p.quantity, 0),
+[cart.plans]
+)
 
 
 const goCart = () => {
@@ -22,17 +35,20 @@ return (
 </div>
 <button
 onClick={goCart}
-className="relative rounded-2xl px-3 py-1.5 text-sm font-semibold border hover:bg-green-50"
+className="relative rounded-2xl px-3 py-1.5 text-sm font-semibold border hover:bg-green-50 flex items-center gap-2"
 aria-label={`Abrir carrito, ${items} artículo(s)`}
 >
-Carrito
+<span>Carrito</span>
 {items > 0 && (
+<>
+<span className="text-gray-700">· {formatCurrency(total)}</span>
 <span
 className="absolute -top-2 -right-2 min-w-[20px] h-5 px-1 rounded-full text-xs bg-green-600 text-white flex items-center justify-center"
 aria-live="polite"
 >
 {items}
 </span>
+</>
 )}
 </button>
 </div>
