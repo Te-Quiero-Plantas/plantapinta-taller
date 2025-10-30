@@ -10,7 +10,7 @@ import { WorkshopProvider, useWorkshop } from "@/contexts/WorkshopContext";
 
 const IndexContent = () => {
   const { selectedWorkshop } = useWorkshop();
-  
+
   return (
     <div className="min-h-screen">
       <Header />
